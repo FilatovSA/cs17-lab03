@@ -91,6 +91,14 @@ Temperature temp_convert(const Temperature& T, Scale scale){
     return Tout;
 }
 
+bool operator < (const Temperature& t1, const Temperature& t2){
+    Temperature Tin1 = t1;
+    Temperature Tin2 = t2;
+    Tin1 = temp_convert(Tin1, Tin2.scale);
+    return (Tin1.temperature < Tin2.temperature);
+
+}
+
 int
 main() {
     test_temperature_input();
