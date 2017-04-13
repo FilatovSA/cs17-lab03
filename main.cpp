@@ -67,6 +67,30 @@ int test_temperature_input(){
 
 }
 
+Temperature temp_convert(const Temperature& T, Scale scale){
+    Temperature Tout = T;
+    //In kelvins
+    switch (T.scale){
+    case Celsius:
+        Tout.temperature -= 273;
+        break;
+    case Farenheit:
+        Tout.temperature = ((9.0/5)*(Tout.temperature - 273)+32);
+        break;
+    }
+    switch (scale){
+    case Celsius:
+        Tout.scale = Celsius;
+        Tout.temperature += 273;
+        break;
+    case Farenheit:
+        Tout.scale = Farenheit;
+        Tout.temperature = ((5.0/9)*(Tout.temperature-32)+273);
+        break;
+    }
+    return Tout;
+}
+
 int
 main() {
     test_temperature_input();
