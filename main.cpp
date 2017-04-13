@@ -6,14 +6,30 @@ using namespace std;
 enum Scale{
     Kelvin = 'K',
     Celsius = 'C',
-    Franheit = 'F'
+    Farenheit = 'F'
 };
-struct T{
+struct Temperature{
     Scale scale;
     double temperature;
-};
+}T;
 
-istream & operator >> (istream &in, T &temperature);
+istream & operator >> (istream &in, Temperature &T){
+    in >> T.temperature;
+    char symbol;
+    in >> symbol;
+    switch (symbol){
+    case 'K':
+        T.scale = Kelvin;
+        break;
+    case 'C':
+        T.scale = Celsius;
+        break;
+    case 'F':
+        T.scale = Farenheit;
+        break;
+    }
+    return in;
+};
 
 int
 main() {
