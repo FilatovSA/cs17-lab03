@@ -129,6 +129,8 @@ main() {
 
     vector<size_t> counts(column_count);
     for (Temperature temp : temps) {
+        min = temp_convert(temp,temp.scale);
+        max = temp_convert(temp,temp.scale);
         size_t column = (size_t)((temp.temperature - min.temperature) / (max
                 .temperature - min.temperature) *
                 column_count);
