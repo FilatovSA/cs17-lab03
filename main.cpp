@@ -102,34 +102,36 @@ bool operator < (const Temperature& t1, const Temperature& t2){
 int
 main() {
     test_temperature_input();
-    size_t number_count;
-    cerr << "Enter number count: ";
-    cin >> number_count;
+    size_t temp_count;
+    cerr << "Enter temperatures count: ";
+    cin >> temp_count;
 
     cerr << "Enter numbers: ";
-    vector<double> numbers(number_count);
-    for (size_t i = 0; i < number_count; i++) {
-        cin >> numbers[i];
+    vector<Temperature> temps(temp_count);
+    for (size_t i = 0; i < temp_count; i++) {
+        cin >> temps[i];
     }
 
     size_t column_count;
     cerr << "Enter column count: ";
     cin >> column_count;
 
-    double min = numbers[0];
-    double max = numbers[0];
-    for (double number : numbers) {
-        if (number < min) {
-            min = number;
+    Temperature min = temps[0];
+    Temperature max = temps[0];
+    for (Temperature temp : temps) {
+        if (temp < min) {
+            min = temp;
         }
-        if (number > max) {
-            max = number;
+        if (max < temp) {
+            max = temp;
         }
     }
 
     vector<size_t> counts(column_count);
-    for (double number : numbers) {
-        size_t column = (size_t)((number - min) / (max - min) * column_count);
+    for (Temperature temp : temps) {
+        size_t column = (size_t)((temp.temperature - min.temperature) / (max
+                .temperature - min.temperature) *
+                column_count);
         if (column == column_count) {
             column--;
         }
