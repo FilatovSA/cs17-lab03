@@ -2,18 +2,9 @@
 #include <vector>
 #include <sstream>
 #include <cassert>
+#include "temperature.h"
 
 using namespace std;
-
-enum Scale{
-    Kelvin = 'K',
-    Celsius = 'C',
-    Farenheit = 'F'
-};
-struct Temperature{
-    Scale scale;
-    double temperature;
-}T;
 
 istream & operator >> (istream &in, Temperature &T){
     in >> T.temperature;
