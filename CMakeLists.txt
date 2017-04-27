@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0)
 project(lab01)
 set(CMAKE_EXE_LINKER_FLAGS -static)
-set(SOURCE_FILES main.cpp)
+set(SOURCE_FILES main.cpp temperature.cc)
 add_executable(lab01 ${SOURCE_FILES})
