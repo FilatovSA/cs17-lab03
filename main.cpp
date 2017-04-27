@@ -38,6 +38,14 @@ int test_temperature_input(){
     assert(T.scale == Celsius);
     assert(T.temperature == -63);
 
+    istringstream in_6 ("-300C");
+    in_6 >> T;
+    assert(!in_6);
+
+    istringstream in_7 ("oh");
+    in_7 >> T;
+    assert(!in_7);
+
 }
 
 
@@ -53,7 +61,12 @@ main() {
     vector<Temperature> temps(temp_count);
     for (size_t i = 0; i < temp_count; i++) {
         cin >> temps[i];
+        if(!cin){
+            cout << "Error";
+            return 1;
+        }
     }
+
 
     size_t column_count;
     cerr << "Enter column count: ";

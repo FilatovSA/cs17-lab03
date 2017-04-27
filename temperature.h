@@ -22,6 +22,7 @@ Temperature temp_convert(const Temperature& T, Scale scale);
 
 bool operator < (const Temperature& t1, const Temperature& t2);
 
+
 #endif //LAB01_TEMPERATURE_H
 
 
